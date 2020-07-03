@@ -9,6 +9,7 @@ i=2
 js={"data":[]}
 
 while i:
+    print(i)
     try:
         values=sht[i]
     except:
@@ -103,10 +104,6 @@ while i:
     js["data"].append(div)
     #print(div)
     i=i+1
-
-with open('sample.json','w') as f:
-    json.dump(js, f)
-
 
 
 import requests
