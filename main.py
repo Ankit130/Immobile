@@ -28,6 +28,8 @@ if(check=='new'):
     file='try1.xlsx'
     wb.save(file)
 
+wb=openpyxl.Workbook('try1.xlsx')
+sht=wb.active
 while(1):
     flag=download(file,seed,sht,wb)
     if(flag==None):
