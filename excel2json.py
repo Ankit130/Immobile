@@ -112,5 +112,5 @@ api_key='d8bfaa6e_860f_4bfc_b5af_776834895f7ea179bf40_98c8_4239_bc68_ee842f72f6b
 
 url='https://grundstuecksboerse.maredata.de:8000/v1/import/'+api_key
 
-r=requests.post(url,json=js)
+r=requests.post(url,json=js['data'])
 print(r.status_code)
