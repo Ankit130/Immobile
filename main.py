@@ -10,7 +10,7 @@ parser.add_argument('-c','--check' ,type=str,required=True,
 parser.add_argument('-s','--seed', type=int,help='Number of Seeds',nargs='?',default=20)
 #parser.add_argument('-f','--file',type=str,required=True,help='Output file name')
 args = parser.parse_args()
-file='data.xlsx'
+file='try1.xlsx'
 seed=args.seed
 check=args.check
 
@@ -28,7 +28,7 @@ if(check=='new'):
     file='try1.xlsx'
     wb.save(file)
 
-wb=openpyxl.Workbook('try1.xlsx')
+wb=openpyxl.load_workbook('try1.xlsx')
 sht=wb.active
 while(1):
     flag=download(file,seed,sht,wb)
