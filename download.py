@@ -1,5 +1,6 @@
 
 import os
+import aiohttp
 from aiohttp import ClientSession
 import asyncio
 from bs4 import BeautifulSoup as soup
@@ -95,7 +96,7 @@ async def run(r,locs,seed):
     sem = asyncio.Semaphore(seed)
     # Create client session that will ensure we dont open new connection
     # per each request.
-    async with ClientSession() as session:
+    async with ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False)) as session:
         for i in range(r):
             # pass Semaphore and session to every GET request
             task = asyncio.ensure_future(bound_fetch(sem, locs[i], session))
