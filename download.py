@@ -106,8 +106,10 @@ async def run(r,locs,seed):
 def getlocs(i):
     r=requests.post('https://www.immobilienscout24.de/Suche/de/grundstueck-kaufen?pagenumber='+str(i))
     data=r.json()['searchResponseModel']
-    return data['resultlist.resultlist']['resultlistEntries'][0]['resultlistEntry']
-
+    try:
+        return data['resultlist.resultlist']['resultlistEntries'][0]['resultlistEntry']
+    except:
+        return None
 def download(file,seed,sht,wb):
     url=geturl()
     print(url)
@@ -115,6 +117,8 @@ def download(file,seed,sht,wb):
     if(i>543):
         return None
     locs=getlocs(i)
+    if(locs==None):
+        return None
     number=len(locs)
     print(number)
     
